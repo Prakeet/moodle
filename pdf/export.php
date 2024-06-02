@@ -22,9 +22,23 @@
  * @copyright   2023 Prakeet Singh <prakeetsingh@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+namespace local_greetings\pdf;
+
 defined('MOODLE_INTERNAL') || die();
-$string['pluginname'] = 'Greetings';
 
-$string['yourmessage'] = 'Your message';
+require_once($CFG->libdir . '/pdflib.php');
 
-$string['postedby'] = 'Posted by {$a}.';
+class pdf_export
+{
+    function export_report()
+    {
+        $pdf = new pdf();
+        $pdf->AddPage();
+        $pdf->WriteHTML('<p>This is an example</p>');
+        $pdf->Output('mypdf.pdf', 'D');
+    }
+}
+
+
+
